@@ -16,6 +16,9 @@
 /.next/
 /out/
 
+#db-data
+/db_data
+
 # production
 /build
 

@@ -67,6 +67,54 @@ export default buildConfig({
         },
       ],
     },
+    {
+      slug: 'achievement',
+      disableDuplicate: false,
+      admin: {
+        useAsTitle: 'Pencapaian',
+      },
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          label: 'Tajuk',
+          required: true,
+        },
+        {
+          name: 'description',
+          type: 'text',
+        },
+        {
+          name: 'status',
+          type: 'select',
+          options: [
+            {
+              label: 'Pencapaian',
+              value: 'pencapaian',
+            },
+            {
+              label: 'Dasar',
+              value: 'dasar',
+            },
+            {
+              label: 'Lain-lain',
+              value: 'misc',
+            },
+          ],
+          required: true,
+        },
+        {
+          name: 'date',
+          type: 'date',
+          validate: async (value, { data }) => {
+            if (data.status === 'pencapaian' && !value) {
+              return 'Date is required when the type is pencapaian'
+            }
+            return true
+          },
+        },
+      ],
+    },
   ],
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

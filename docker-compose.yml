@@ -1,0 +1,13 @@
+services:
+  mongo:
+    image: mongo
+    restart: always
+    container_name: mongo
+    command:
+      - --storageEngine=wiredTiger
+    ports:
+      - 27017:27017
+    volumes:
+      - ./db_data/:/data/db/
+    logging:
+      driver: none

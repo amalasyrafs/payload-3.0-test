@@ -11,6 +11,7 @@ export interface Config {
     users: User;
     pages: Page;
     media: Media;
+    achievement: Achievement;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -80,6 +81,19 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "achievement".
+ */
+export interface Achievement {
+  id: string;
+  title: string;
+  description?: string | null;
+  status: 'pencapaian' | 'dasar' | 'misc';
+  date?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
